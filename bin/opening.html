@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Opening</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="static/opening.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="js/lib/jquery-3.5.1.js"></script>
+    <script src='js/lib/socket.io.js'></script>
+
+    <!-- font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="fullscreenFadeIn"></div>
+    <!-- <audio id="lobbyMusic" src="./sounds/lobbysound.mp3" loop="loop"></audio> -->
+    <div class="textcontainer " id="textcontainer1">
+      <!-- <div class="textcontainer" id="textcontainer1"> -->
+      <h1 class="nodisplay" id="text1">When once the sky was blue</h1>
+      <h2 class="nodisplay" id="text2">a virtual experience</h2>
+    </div>
+    <div class="textcontainer nodisplay roboticfont" id="textcontainer2">
+      <h1 id="text3">This performance is best experienced with headphones</h1>
+      <img id="text3_image" src="icons/headphones.png" />
+    </div>
+    <div class="textcontainer nodisplay roboticfont" id="textcontainer3">
+      <h1 id="text4">
+        We recommend being in an isolated environment to avoid interruptions
+      </h1>
+      <img id="text4_image" src="icons/cube3.png" />
+    </div>
+    <div class="textcontainer nodisplay roboticfont" id="textcontainer4">
+      <h1 id="text5">
+        This performance is best experienced in total darkness.
+      </h1>
+      <img id="text5_image" src="icons/lightbulb3.png" />
+      <h2 id="text6">
+        Now it is the time to draw the curtains, switch off your lights, and
+        move if necessary.
+      </h2>
+    </div>
+    <div class="textcontainer nodisplay roboticfont" id="textcontainer5">
+      <!-- <div class="textcontainer nodisplay roboticfont" id="textcontainer5"> -->
+
+      <!-- <button onclick="reload()"><a href="#">Come Back Later</a></button> -->
+      <div class="centerButton">
+        <a href="#" id="toScene" onclick="fadein()">Enter the world</a>
+      </div>
+      <!-- <button><a href="/performance">Enter the world</a></button> -->
+    </div>
+    <div id="audio_error_text" class="textcontainer">
+      <h1 id="text3">Your browser currently does not allow audio. Please change your audio permissions to enjoy this performance.</h1>
+    </div>
+
+    <script src="js/opening.js"></script>
+  </body>
+</html>

@@ -1,0 +1,499 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.1.3/dist/aframe-particle-system-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-tangram-terrain-component/dist/aframe-tangram-terrain-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-aabb-collider-component@3.1.0/dist/aframe-aabb-collider-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-proxy-event-component/dist/aframe-proxy-event-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script> 
+    <link rel="stylesheet" href="static/opening.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <audio id="base_layer_always_on" loop> 
+      <source src="sounds/new/0_addition to base_synth+sounds.mp3" type="audio/mp3" />
+    </audio>
+    <audio id="player" autoplay noloop allow="autoplay">
+      <source src="sounds/new/0_opening VO.mp3" type="audio/mp3" />
+    </audio>
+    <audio id="performance_1_audio">
+      <source src="sounds/new/1_Performance.mp3" type="audio/mp3" />
+    </audio>
+    <audio id="performance_2_audio">
+      <source src="sounds/new/2_Performance.mp3" type="audio/mp3" />
+    </audio>
+    <audio id="performance_3_audio">
+      <source src="sounds/new/3_Performance.mp3" type="audio/mp3" />
+    </audio>
+    <audio id="addition_1_audio">
+      <source src="sounds/new/1_addition to base_water.mp3" type="audio/mp3" />
+    </audio>
+    <audio id="addition_2_audio">
+      <source src="sounds/new/2_addition to base_breaths.mp3" type="audio/mp3" />
+    </audio>
+    <audio id="addition_3_audio">
+      <source src="sounds/new/3_addition to base.mp3" type="audio/mp3" />
+    </audio>
+
+    <div id="openingTitle">
+      <div id="fullscreenFadeIn"></div>
+
+      <div id="audio_error_text" class="textcontainer">
+        <h1 id="text3">
+          Your browser currently does not allow audio. Please change your audio
+          permissions and reload the page to enjoy this performance.
+        </h1>
+      </div>
+      <div id="opening_text">
+        <div class="textcontainer" id="textcontainer1">
+          <h1 class="nodisplay" id="text1">When once the sky was blue</h1>
+          <h2 class="nodisplay" id="text2">a virtual experience</h2>
+          <div class="centerButton nodisplay" id="startButtonContainer">
+            <a href="#" id="toScene" class="" onclick="fadein()">Enter the World</a>
+          </div>
+          
+        </div>
+        <div class="textcontainer nodisplay roboticfont" id="textcontainer2">
+          <h1 id="text3">
+            This performance is best experienced with headphones
+          </h1>
+          <img id="text3_image" src="icons/headphoneJPGCropped.jpg" />
+        </div>
+        <div class="textcontainer nodisplay roboticfont" id="textcontainer3">
+          <h1 id="text4">
+            We recommend being in an isolated environment to avoid interruptions
+          </h1>
+          <img id="text4_image" src="./icons/roomJPGCropped.jpg" />
+        </div>
+        <div class="textcontainer nodisplay roboticfont" id="textcontainer4">
+          <h1 id="text5">
+            This performance is best experienced in total darkness.
+          </h1>
+          <img id="text5_image" src="icons/lightbulbJPGCropped.jpg" />
+          <h2 id="text6">
+            Now it is the time to draw the curtains, switch off your lights, and
+            move if necessary.
+          </h2>
+        </div>
+        <div class="textcontainer nodisplay roboticfont" id="textcontainer5">
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="nodisplay" id="panelToFadeBetweenScenes"></div>
+    <div class="textcontainer nodisplay roboticfont" id="breatheIn">
+      <h1>Breathe In</h1>
+    </div>
+    <div class="textcontainer nodisplay roboticfont" id="breatheOut">
+      <div class="centerButton">
+        <h1>Breathe Out</h1>
+      </div>
+    </div>
+    <a-scene
+      loading-screen="dotsColor: black; backgroundColor: black"
+      vr-mode-ui="enabled: false"
+    >
+      <!-- <a-scene
+    loading-screen="dotsColor: white; backgroundColor: black"
+    vr-mode-ui="enabled: false"
+  > -->
+      <a-assets>
+        <img id="shadow" crossorigin="anonymous" src="static/shadow.png" />
+        <a-asset-item id="francis-1-obj" src="static/francis1.obj"></a-asset-item>
+        <a-asset-item id="francis-1-mtl" src="static/francis1.mtl"></a-asset-item>
+        <a-asset-item id="francis-2-obj" src="static/francis2.obj"></a-asset-item>
+        <a-asset-item id="francis-2-mtl" src="static/francis2.mtl"></a-asset-item>
+        <a-asset-item id="francis-3-obj" src="static/francis1.obj"></a-asset-item>
+        <a-asset-item id="francis-3-mtl" src="static/francis1.mtl"></a-asset-item>
+        <a-asset-item
+          id="francis-color-obj"
+          src="static/colours/cloak_red.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="francis-color-mtl"
+          src="static/colours/cloak_red.mtl"
+        ></a-asset-item>
+        <img id="skymap" src="textures/sky2.png" crossorigin="anonymous" />
+        <img id="flare" src="textures/flare.jpg" />
+        <img
+          id="sky"
+          src="https://cdn.glitch.com/51bf6811-51a6-4392-8725-e93a5c65ce3b%2Fgif.gif?v=1605426636772"
+        />
+        <a-asset-item
+          id="yamlElevation"
+          src="https://raw.githubusercontent.com/tangrams/terrain-demos/master/styles/terrarium-elevation.yaml"
+        />
+        <img id="moon" src="textures/CMdOmV9W8AA5--n.png" />
+        <img id="map" src="textures/tahoe_map.jpg" />
+
+        <img id="normalmap" src="textures/normalmap.png" />
+        <img id="skyOne" src="textures/starry.png" />
+
+        <img
+          id="normalMapCracks"
+          src="textures/cracksTextures/crackNormal.png"
+        />
+        <img
+          id="cracksTexture"
+          src="textures/cracksTextures/crackTexture.png"
+        />
+        <img id="cracksWhite" src="textures/cracksTextures/crackWhite.png" />
+      </a-assets>
+      <!-- IMPORTANT: for some reason this allows the scene to be paused on loading the page. -->
+      <a-node id="waitOnMe"></a-node>
+      <a-entity id="lobby">
+        <a-plane
+          position="0 0 -4"
+          rotation="-90 0 0"
+          width="10000"
+          height="10000"
+          color="#222"
+          scale=" 5 5 1"
+          material="roughness: 1"
+          animation="property: color; dur: 4000;
+          from: #ffffff; to: #222;
+          loop: false; dir: alternate; autoplay: true"
+        ></a-plane>
+        <a-sky
+          id="lobbySky"
+          color="#ffffff"
+          animation__one="property: color; dur: 4000;
+        from: #ffffff; to: #000000;
+        loop: false; dir: alternate; autoplay: true"
+          animation="property: color; from:#000000; to: #ffffff; loop: 1; dur: 2000; delay:100; dir: alternate; autoplay: false"
+        >
+        </a-sky>
+        <a-sky
+          id="lobbySkyTransitionTwo"
+          color="#ffffff"
+          animation__one="property: color; dur: 4000;
+      from: #ffffff; to: #000000;
+      loop: false;  dir: alternate; autoplay: true"
+          animation="property: color; dir: alternate; dur: 1800; delay: 50; loop: false; repeat: 1; from: #000000; to: #ffffff; autoplay: false"
+        >
+        </a-sky>
+        <a-sky
+          id="lobbySkyTransitionThree"
+          color="#ffffff"
+          animation__one="property: color; dur: 4000;
+    from: #ffffff; to: #000000;
+    loop: false; dir: alternate; autoplay: true"
+          animation="property: color; dir: alternate; dur: 1800; delay: 50; loop: false; repeat: 1; from: #000000; to: #ffffff; autoplay: false"
+        >
+        </a-sky>
+        <a-entity position="0 3.5 0">
+          <a-entity camera foo look-controls wasd-controls id="lobbyCam">
+            <!-- this is the cursor, the startEvents: click is what triggers transitions in #francis1 #francis2 #francis3-->
+            <!-- code taken from this example: https://codepen.io/Perhelion/pen/gOavybJ
+            objects that can be interacted with are of class "francis," raycaster max distance is 3 units, 
+            hovering over one of the .francis objects triggers the animation__click, animation__fuse and animation__mouseleave events, changing 
+          the length of the ring of reticle. Triggers animations of type "startEvents: click" which are the lights below that change when entering a woeld
+        -->
+            <a-entity
+              id="cursorReticle"
+              position="0 0 -1.2"
+              animation__click="property: geometry.thetaLength; startEvents: click; easing: easeInCubic; dur: 2000; from: 359; to: 360"
+              animation__fusing="property: geometry.thetaLength; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 0; to: 359"
+              animation__mouseleave="property: geometry.thetaLength; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 0"
+              geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.035;"
+              material="color: black; shader: flat; opacity: 1"
+              cursor="maxDistance: 3; fuse: true"
+              raycaster="far: 3; objects: .francis"
+            >
+            </a-entity>
+          </a-entity>
+        </a-entity>
+        <!-- ambient light for whole scene-->
+        <a-entity
+          light="color: #BBB; type: ambient"
+          data-aframe-default-light=""
+          aframe-injected=""
+          visible=""
+          color="#ffffff"
+          animation="property: color; dur: 4000;
+        from: #ffffff; to: #BBB;
+        loop: false;  dir: alternate; autoplay: true"
+        ></a-entity>
+        <!-- more ambient light.-->
+        <a-entity
+          light="intensity: 1.2; castShadow: true"
+          position="-0.5 1 1"
+          data-aframe-default-light=""
+          aframe-injected=""
+          visible=""
+          animation="property: color; dur: 4000;
+          from: #ffffff; to: #BBB;
+          loop: false; dir: alternate; autoplay: true"
+        ></a-entity>
+        <!-- all these lights are used to transition between scenes and when entering the lobby as well, these "sit" below each francis. -->
+        <a-light
+          type="point"
+          intensity="1"
+          id="francis1Light"
+          color="white"
+          distance="3.6"
+          position="-5 1 -3"
+          animation="property: intensity; dur: 4000;
+        from: 6; to: 1.5;
+        loop: false; reapeat: 3; dir: alternate; autoplay: true"
+        >
+        </a-light>
+        <a-light
+          type="point"
+          intensity="1"
+          id="francis1LightTwo"
+          color="white"
+          distance="3.6"
+          position="-5 1 -3"
+          animation="property: intensity; dur: 4000;
+       from: 0.6; to: 8;
+       loop: false; reapeat: 3; dir: alternate; autoplay: false"
+        >
+        </a-light>
+        <!-- "startEvents: click;" triggers bright light transition animation with raycast on reticle object. -->
+        <a-entity
+          francis1mouseenter
+          id="francis1"
+          class="francis"
+          obj-model="obj: #francis-1-obj; mtl: #francis-1-mtl"
+          position="-5.048 -0.238 -3"
+          scale="0.03 0.03 0.03"
+          rotation="0 50 0"
+          light="type: hemisphere; color: white; intensity: 0;"
+          animation__rotation="property: light.intensity; from:0; to: 8; loop: 1; dur: 2000; delay:100; dir: alternate; startEvents: click;"
+        >
+        </a-entity>
+        <a-entity
+          francis1mouseenter
+          id="francisColorOne"
+          class="francis"
+          obj-model="obj: #francis-color-obj; mtl: #francis-color-mtl"
+          position="-5.048 -0.238 -3"
+          scale="0.03 0.03 0.03"
+          rotation="0 50 0"
+          visible="false"
+          light="type: hemisphere; color: white; intensity: 0;"
+          animation__rotation="property: light.intensity; from:0; to: 8; loop: 1; dur: 2000; delay:100; dir: alternate; startEvents: click;"
+        >
+        </a-entity>
+        <a-light
+          type="point"
+          intensity="1"
+          id="francis2LightTwo"
+          color="white"
+          distance="3.6"
+          position="0 1 -6"
+          animation="property: intensity; dur: 4000;
+     from: 0.6; to: 8;
+     loop: false; reapeat: 3; dir: alternate; autoplay: false"
+        >
+        </a-light>
+        <a-light
+          type="point"
+          intensity="1"
+          id="francis3LightTwo"
+          color="white"
+          distance="3.6"
+          position="4.748 0.4 -3"
+          animation="property: intensity; dur: 4000;
+   from: 0.6; to: 8;
+   loop: false; reapeat: 3; dir: alternate; autoplay: false"
+        >
+        </a-light>
+  
+
+<!-- shadowsss -->
+
+        <!-- <a-plane
+        id="shadow0"
+        visible="false"
+        material="src: #shadow; transparent: true"
+        position="-62.635 1 -4.135"
+        scale="10 10 10"
+        look-at="#lobbyCam"
+        ></a-plane>
+        <a-plane
+        id="shadow1"
+        visible="false"
+        material="src: #shadow; transparent: true"
+        position="2.000 1 41.157"
+        scale="10 10 10"
+        look-at="#lobbyCam"
+        ></a-plane>
+        <a-plane
+        id="shadow2"
+        visible="false"
+        material="src: #shadow; transparent: true"
+        position="41.484 1 0"
+        scale="10 10 10"
+        look-at="#lobbyCam"
+        ></a-plane>
+        <a-plane
+        id="shadow3"
+        visible="false"
+        material="src: #shadow; transparent: true"
+        position="4.000 1 -60.489"
+        scale="10 10 10"
+        look-at="#lobbyCam"
+        ></a-plane>
+        <a-plane
+        id="shadow4"
+        visible="false"
+        material="src: #shadow; transparent: true"
+        position="-17.134 1 -68.070"
+        scale="10 10 10"
+        look-at="#lobbyCam"
+        ></a-plane>
+        <a-plane
+        id="shadow5"
+        visible="false"
+        material="src: #shadow; transparent: true"
+        position="34.712 1 -37.239"
+        scale="10 10 10"
+        look-at="#lobbyCam"
+        ></a-plane>
+        <a-plane
+        id="shadow6"
+        visible="false"
+        material="src: #shadow; transparent: true"
+        position="42.020 1 34.669"
+        scale="10 10 10"
+        look-at="#lobbyCam"
+        ></a-plane>
+        <a-plane
+        id="shadow7"
+        visible="false"
+        material="src: #shadow; transparent: true"
+        position="-27.739 1 39.733"
+        scale="10 10 10"
+        look-at="#lobbyCam"
+        ></a-plane>
+        <a-plane
+        id="shadow8"
+        visible="false"
+        material="src: #shadow; transparent: true"
+        position="-43.532 1 -38.499"
+        scale="10 10 10"
+        look-at="#lobbyCam"
+        ></a-plane>
+        <a-plane
+        id="shadow9"
+        visible="false"
+        material="src: #shadow; transparent: true"
+        position="-54.006 1 17.036"
+        scale="10 10 10"
+        look-at="#lobbyCam"
+        ></a-plane> -->
+
+<!-- shadowsss -->
+
+
+
+
+        <!-- event from cursor is what triggers this, triggered when the cursor reticls becomes a full circle. -->
+        <a-entity
+          francis2mouseenter
+          id="francis2"
+          class="francis"
+          obj-model="obj: #francis-2-obj; mtl: #francis-2-mtl"
+          position="0 -0.238 -6.897"
+          scale="0.03 0.03 0.03"
+          light="type: hemisphere; color: white; intensity: 0;"
+          animation__rotation="property: light.intensity; from:0; to: 8; loop: 1; dur: 2000; delay:100; dir: alternate; startEvents: click;"
+        ></a-entity>
+        <a-entity
+          francis3mouseenter
+          id="francis3"
+          class="francis"
+          obj-model="obj: #francis-1-obj; mtl: #francis-1-mtl"
+          position="4.748 -0.238 -3"
+          scale="0.03 0.03 0.03"
+          rotation="0 -50 0"
+          light="type: hemisphere; color: white; intensity: 0;"
+          animation__rotation="property: light.intensity; from:0; to: 8; loop: 1; dur: 2000; delay:100; dir: alternate; startEvents: click;"
+        ></a-entity>
+      </a-entity>
+
+      <!-- container for first performance (shapes and mountains-->
+      <a-entity id="firstPerformance" visible="false">
+        <!-- sky animation transitions from yellow to violet on enter, waiting for the change to a certain red value is detected in the script
+        to change the scene back to lobby-->
+        <a-sky
+          id="scene1Sky"
+          geometry="primitive:sphere; radius:170; phiLength:360; phiStart:0; thetaLength:90"
+          material="shader:flat; side:back; height:2048; src:#skymap; width:2048;"
+          animation="property: material.color; dur: 20000;
+          from: #ffff00 ; to: #ff5cff;
+          loop: false; dir: alternate; autoplay: false"
+        ></a-sky>
+        <!-- first ground plane, has a texture of #cracksWhite, the opacity gets faded to reveal the solid colored plane -->
+
+        <a-entity
+          geometry="primitive: plane; width: 340; height: 340; segmentsHeight: 0; segmentsWidth: 0;"
+          rotation="-90 0 0"
+          position="0 0 0"
+          material="roughness: 1; normalMap: #normalMapCracks; normalScale: 10; color: #0f0f0f; src:#cracksWhite; repeat: 22 22"
+        ></a-entity>
+        <a-light type="directional" position="0 2 0"></a-light>
+        <!-- the solid colored ground plane -->
+
+        <a-entity
+          id="floorToFadeScene1"
+          geometry="primitive: plane; width: 340; height: 340; segmentsHeight: 0; segmentsWidth: 0;"
+          rotation="-90 0 0"
+          position="0 0 0"
+          material="roughness: 1; normalScale: 10; color: #0f0f0f;"
+          animation="property: material.opacity; dur: 20000;
+          from:0; to: 1;
+          loop: false; dir: alternate; autoplay: false"
+        ></a-entity>
+      </a-entity>
+      <!-- container for second scene (embers)-->
+      <a-entity id="secondPerformance" visible="false">
+        <!-- sky animation transitions from yellow to red on enter, waiting for the change to a certain red value is detected in the script
+        to change the scene back to lobby-->
+        <a-sky
+          id="scene2Sky"
+          color="#ffc04c "
+          animation="property: material.color; dur: 20000;
+        from: #ffc04c ; to: #4c0000;
+        loop: false; dir: alternate; autoplay: false"
+        ></a-sky>
+        <!-- from particle library: https://unpkg.com/aframe-particle-system-component@1.1.3/dist/aframe-particle-system-component.min.js-->
+        <a-entity
+          position="0 26 3"
+          id="embers"
+          particle-system="preset: dust; enabled: true; particleCount: 5000; opacity: 1; maxAge: 180; velocityValue: 0.04 0.22 0.04; positionSpread: 60 8 60; size: 0.4;"
+        ></a-entity>
+      </a-entity>
+      <!-- container for third scene (stars)-->
+
+      <a-entity id="thirdPerformance" visible="false">
+        <a-sky
+          src="#skyOne"
+          geometry="radius: 100; thetaLength: 100"
+          rotation="-90 0 0"
+        ></a-sky>
+
+        <a-sky
+          src="#skyOne"
+          geometry="radius: 100; thetaLength: 100; primitive: box; width: 100; height: 100; depth: 100;"
+          rotation="90 0 0"
+        ></a-sky>
+        <a-entity
+          id="planeToFollow"
+          geometry="primitive: plane; width: 2; height: 2; segmentsHeight: 20; segmentsWidth: 20;"
+          rotation="-90 0 0"
+          position="0 0 0"
+          material="color: #ffffff"
+        ></a-entity>
+      </a-entity>
+    </a-scene>
+    <script src="js/lib/jquery-3.5.1.js"></script>
+    <script src="js/lib/socket.io.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/opening.js"></script>
+  </body>
+</html>

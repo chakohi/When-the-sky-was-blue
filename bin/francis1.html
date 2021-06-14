@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-tangram-terrain-component/dist/aframe-tangram-terrain-component.min.js"></script>
+    <script src="http://threejs.org/build/three.min.js"></script>
+    <script src='js/lib/socket.io.js'></script>
+  </head>
+  <!-- animation="property: fog.color; dur: 4000;
+  from: #ffffff; to: #a6a6a6;
+  loop: false; dir: alternate" -->
+  <body>
+    <a-scene
+      shaperain
+      id="firstPerformance"
+      fog="type: exponential; density: 0.0014; "
+    >
+      <a-assets>
+        <img id="skymap" src="textures/sky2.png" crossorigin="anonymous" />
+        <img
+          id="sky"
+          src="https://cdn.glitch.com/51bf6811-51a6-4392-8725-e93a5c65ce3b%2Fgif.gif?v=1605426636772"
+        />
+        <a-asset-item
+          id="yamlElevation"
+          src="https://raw.githubusercontent.com/tangrams/terrain-demos/master/styles/terrarium-elevation.yaml"
+        />
+        <img id="moon" src="textures/CMdOmV9W8AA5--n.png" />
+        <img id="map" src="textures/tahoe_map.jpg" />
+
+        <img id="normalmap" src="textures/normalmap.png" />
+      </a-assets>
+      <!-- <a-sky
+        id="scene1Sky"
+        color="#ffff00 "
+        animation="property: material.color; dur: 4000;
+    from: #ffff00 ; to: #340034;
+    loop: false; dir: alternate"
+      ></a-sky> -->
+      <a-entity
+        id="sky"
+        geometry="primitive:sphere; radius:30; phiLength:360; phiStart:0; thetaLength:90"
+        material="shader:flat; side:back; height:2048; src:#skymap; width:2048;"
+        from: #ffff00 ; to: #ff5cff;
+        loop: false; dir: alternate
+      ></a-entity>
+      <!-- <a-entity
+        id="terrain"
+        visible="true"
+        geometry="primitive: plane; buffer: true;
+    width: 1100; height: 1100; 
+    segmentsWidth: 30; segmentsHeight: 1; "
+        material="wireframe: false; displacementScale: 10; "
+        tangram-static-terrain="
+      map: #moon;
+      normalMap: #normalmap;
+      bounds: 12.61882781982422,47.14139472293294,12.756156921386719,47.23472275076704;
+      lodCount: 4;
+      lod: 1;
+      vertexNormals: true;
+      
+    "
+        rotation="-90 0 0"
+        position="200 -13 0"
+        sphere-matrix
+        NOanimation="property: material.displacementScale; dur: 4000; from: 0; to: 20; startEvents: tangram-terrain-loaded;"
+      > -->
+      </a-entity>
+      <a-entity
+        geometry="primitive: plane; width: 200; height: 200; segmentsHeight: 20; segmentsWidth: 20;"
+        rotation="-90 0 0"
+        position="0 0 0"
+        material="roughness: 1; normalMap: #map; normalScale: 10; color: #110611;"
+      ></a-entity>
+      <a-camera foo position="0 1 4.555">
+        <a-cursor color="#FF0000" />
+      </a-camera>
+      <!-- <a-box color="green" position="0 0 3"> </a-box> -->
+    </a-scene>
+    <script src="js/francis1.js"></script>
+  </body>
+</html>

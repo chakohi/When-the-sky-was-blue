@@ -1,0 +1,35 @@
+<html>
+	<head>
+	  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+	  <script src="https://unpkg.com/aframe-aabb-collider-component@3.1.0/dist/aframe-aabb-collider-component.min.js"></script>
+	  <script src='js/lib/socket.io.js'></script>
+	</head>
+	<body>
+	  <a-scene debug>
+  
+		<a-assets>
+		  <a-asset-item id="francis-obj" src="static/francis.obj"></a-asset-item>
+		  <a-asset-item id="francis-mtl" src="static/francis.mtl"></a-asset-item>
+			<a-asset-item id="openingVoice" src="static/sounds/new/0_opening VO.mp3"></a-asset-item>
+		</a-assets>
+
+		<!-- Scene essentials -->
+
+		<a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#222" scale=" 5 5 1"></a-plane>
+		<a-sky color="#000000"></a-sky>
+		<a-camera foo geometry="primitive: box" aabb-collider="objects: a-entity"></a-camera>
+		
+
+		<!-- 3D models -->
+		<!-- <a-box position="-5.048 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box> -->
+		<a-entity id="francis1" obj-model="obj: #francis-obj; mtl: #francis-mtl" position="-5.048 -0.238 -3" scale="0.704 0.704 0.704" sound="src: #openingVoice; autoplay: true; distanceModel: linear; loop: true; positional: false"></a-entity>
+		<!-- <a-sphere position="0 1.25 -6.897" radius="1.25" color="#EF2D5E"></a-sphere> -->
+		<a-entity id="francis2" obj-model="obj: #francis-obj; mtl: #francis-mtl" position="0 -0.238 -6.897" scale="0.704 0.704 0.704"></a-entity>
+		<!-- <a-cylinder position="4.748 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder> -->
+		<a-entity id="francis3" obj-model="obj: #francis-obj; mtl: #francis-mtl" position="4.748 -0.238 -3" scale="0.704 0.704 0.704"></a-entity>
+
+	  </a-scene>
+	  <script src="js/index.js"></script>
+	</body>
+
+</html>

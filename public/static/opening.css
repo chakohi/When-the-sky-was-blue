@@ -1,0 +1,322 @@
+@font-face {
+  font-family: Garamond;
+  src: url("fonts/AGaramondPro-Regular.otf") format("opentype");
+}
+html,
+body {
+  background-color: black;
+  text-align: center;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: Garamond;
+}
+
+img {
+}
+
+h1,
+h2 {
+  color: white;
+  font-family: Garamond;
+}
+
+h1 {
+  font-size: 39px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 300;
+}
+.textcontainer {
+  margin-top: 20vh;
+  height: 100%;
+  text-align: center;
+}
+
+.nodisplay {
+  display: none;
+}
+#textcontainer1 {
+  font-family: "Roboto", sans-serif;
+  margin-top: 40vh;
+}
+
+.roboticfont {
+  font-family: "JetBrains Mono", monospace;
+}
+
+#textcontainer4 {
+  margin-top: 20vh;
+}
+
+#breatheIn {
+  margin-top: 20vh;
+  z-index: 100;
+  position: relative;
+  pointer-events: none;
+}
+
+#breatheOut {
+  margin-top: 20vh;
+  z-index: 100;
+  position: relative;
+  pointer-events: none;
+}
+
+#text3 {
+  /* text-align: center; */
+  width: 50%;
+  margin: auto;
+}
+
+#text4 {
+  /* text-align: center; */
+  width: 50%;
+  margin: auto;
+}
+
+#text5 {
+  /* text-align: center; */
+  width: 50%;
+  margin: auto;
+}
+
+#text6 {
+  /* text-align: center; */
+  width: 50%;
+  margin: auto;
+}
+button {
+  background-color: rgb(68, 68, 68); /* Green */
+  border: none;
+  color: white;
+  padding: 18px 36px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border: rgba(255, 255, 255, 0) 1.2px solid;
+}
+.centerButton a {
+  height: 20px;
+}
+
+.centerButton a:before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 0;
+  height: 0;
+  background: transparent;
+  border: 2px solid transparent;
+}
+.centerButton a:hover:before {
+  animation: animate 1.6s linear forwards;
+}
+
+@keyframes animate {
+  0% {
+    width: 0;
+    height: 0;
+    border-top-color: #5f5f5f;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  40% {
+    width: 100%;
+    height: 0;
+    border-top-color: #5f5f5f;
+    border-right-color: #5f5f5f;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  80% {
+    width: 100%;
+    height: 100%;
+    border-top-color: #fff;
+    border-right-color: #fff;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    border-top-color: #9f9f9f;
+    border-right-color: #9f9f9f;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+}
+
+.centerButton a:after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 0;
+  height: 0;
+  background: transparent;
+  border: 2px solid transparent;
+}
+.centerButton a:hover:after {
+  animation: animate2 1.6s linear forwards;
+  /* animation: animate2 1s linear forwards; */
+}
+
+@keyframes animate2 {
+  0% {
+    width: 0;
+    height: 0;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: #5f5f5f;
+  }
+  40% {
+    width: 0;
+    height: 100%;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: #5f5f5f;
+    border-left-color: #5f5f5f;
+  }
+  80% {
+    width: 100%;
+    height: 100%;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-left-color: #fff;
+    border-bottom-color: #fff;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: #9f9f9f;
+    border-left-color: #9f9f9f;
+  }
+}
+.centerButton a {
+  text-decoration: none;
+  position: relative;
+  width: 300px;
+  height: auto;
+  border: 2px solid #262626;
+  text-align: center;
+  line-height: 50px;
+  display: inline-block;
+  color: white;
+  font-family: "Garamond";
+  font-size: 32px;
+  font-weight: 200;
+  z-index: 1000;
+}
+button a {
+  text-decoration: none;
+  position: relative;
+  width: 240px;
+  height: 100px;
+  border: 2px solid #f00;
+  text-align: center;
+  line-height: 50px;
+  display: inline-block;
+  color: white;
+  font-family: "JetBrains Mono", monospace;
+  transition: border 1s;
+}
+button:hover {
+  border: white 1.2px solid;
+}
+
+#text4_image {
+  margin-top: 30px;
+}
+
+#text5_image {
+  /* width: 180px;
+  height: auto; */
+  margin: 30px auto 30px auto;
+}
+/* #text1{
+    display: none;
+}
+
+#text2{
+    display: none;
+}
+
+#textcontainer3{
+    display: none;
+} */
+#textcontainer4 {
+  margin-top: 10vh;
+}
+#textcontainer5 {
+  margin-top: 40vh;
+}
+
+/* #textcontainer2{
+    height: 100px;
+    top:0;
+} */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.a-loader-title {
+  color: white;
+  margin-top: 20%;
+  font-family: "Roboto", sans-serif;
+  font-size: 30px;
+  animation: 0.8s ease-out 0s 1 slideInFromLeft;
+}
+
+#fullscreenFadeIn {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  /* background-color: rgba(255, 255, 255, 0); */
+  transition: opacity 2.7s;
+  background: white;
+}
+
+#panelToFadeBetweenScenes {
+  z-index: 11;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(255, 255, 255, 0); */
+  background: white;
+  pointer-events: none;
+}
+
+#fullscreenFadeIn.fadeInWhite {
+  opacity: 1;
+}
+
+#openingTitle {
+  z-index: 10;
+  position: relative;
+}
+#audio_error_text {
+  font-family: Garamond;
+  display: none;
+}
